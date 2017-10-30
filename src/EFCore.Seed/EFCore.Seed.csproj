@@ -6,6 +6,10 @@
     <RootNamespace>Daztane.EntityFrameworkCore.Seed</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions">
       <Version>2.0.0</Version>
