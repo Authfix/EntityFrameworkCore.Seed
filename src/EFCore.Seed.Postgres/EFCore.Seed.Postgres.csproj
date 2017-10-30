@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Authfix.EntityFrameworkCore.Seed.Postgres</AssemblyName>
     <RootNamespace>Authfix.EntityFrameworkCore.Seed.Postgres</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Authfix.EntityFrameworkCore.Seed.Postgres</PackageId>
     <Authors>Authfix</Authors>
     <Company />
