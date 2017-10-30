@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace Daztane.EntityFrameworkCore.Seed.Models
+namespace Authfix.EntityFrameworkCore.Seed.Models
 {
     public abstract class SeederBase
     {

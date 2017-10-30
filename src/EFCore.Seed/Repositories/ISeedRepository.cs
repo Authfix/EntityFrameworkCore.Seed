@@ -1,8 +1,8 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Entities;
+﻿using Authfix.EntityFrameworkCore.Seed.Entities;
 
 using System.Collections.Generic;
 
-namespace Daztane.EntityFrameworkCore.Seed.Repositories
+namespace Authfix.EntityFrameworkCore.Seed.Repositories
 {
     public interface ISeedRepository
     {

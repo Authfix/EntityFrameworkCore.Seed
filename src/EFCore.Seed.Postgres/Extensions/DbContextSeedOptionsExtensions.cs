@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Daztane.EntityFrameworkCore.Seed.Postgres.Extensions
+namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
 {
     public static class DbContextOptionsBuilderExtensions
     {

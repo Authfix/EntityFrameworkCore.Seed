@@ -1,4 +1,4 @@
-﻿namespace Daztane.EntityFrameworkCore.Seed
+﻿namespace Authfix.EntityFrameworkCore.Seed
 {
     public class Constants
     {

@@ -1,4 +1,4 @@
-﻿namespace Daztane.EntityFrameworkCore.Seed.Entities
+﻿namespace Authfix.EntityFrameworkCore.Seed.Entities
 {
     public class SeedRow
     {

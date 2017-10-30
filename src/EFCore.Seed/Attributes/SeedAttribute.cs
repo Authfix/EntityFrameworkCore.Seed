@@ -1,16 +1,30 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Helpers;
+﻿using Authfix.EntityFrameworkCore.Seed.Helpers;
 using System;
 using System.Text.RegularExpressions;
 
-namespace Daztane.EntityFrameworkCore.Seed.Attributes
+namespace Authfix.EntityFrameworkCore.Seed.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class SeedAttribute : Attribute
     {
+        /// <summary>
+        /// The date pattern
+        /// </summary>
         private const string DatePattern = @"(^[0-9]{14})";
+
+        /// <summary>
+        /// The separator pattern
+        /// </summary>
         private const string SeparatorPattern = "(_)";
+
+        /// <summary>
+        /// The name pattern
+        /// </summary>
         private const string NamePattern = "((?:[a-z][a-z]+))";
 
+        /// <summary>
+        /// The seed regex
+        /// </summary>
         private readonly Regex _seedRegex;
 
         /// <summary>

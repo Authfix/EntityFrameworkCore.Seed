@@ -1,5 +1,5 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Attributes;
-using Daztane.EntityFrameworkCore.Seed.Models;
+﻿using Authfix.EntityFrameworkCore.Seed.Attributes;
+using Authfix.EntityFrameworkCore.Seed.Models;
 using EFCore.Samples.WebApp.Models;
 
 namespace EFCore.Samples.WebApp.Seeds

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Daztane.EntityFrameworkCore.Seed.Extensions
+namespace Authfix.EntityFrameworkCore.Seed.Extensions
 {
     public static class DatabaseFacadeExtensions
     {

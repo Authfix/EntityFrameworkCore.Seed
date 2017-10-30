@@ -1,10 +1,10 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Attributes;
+﻿using Authfix.EntityFrameworkCore.Seed.Attributes;
 
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Daztane.EntityFrameworkCore.Seed.Internal
+namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
     public partial class SeedAssembly : ISeedAssembly
     {

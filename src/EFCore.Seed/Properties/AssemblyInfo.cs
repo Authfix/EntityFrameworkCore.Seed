@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Daztane.EntityFrameworkCore.Seed")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Authfix.EntityFrameworkCore.Seed")]
+[assembly: AssemblyDescription("Add seed mechanism to entity framework core")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Daztane.EntityFrameworkCore.Seed")]
+[assembly: AssemblyProduct("Authfix.EntityFrameworkCore.Seed")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

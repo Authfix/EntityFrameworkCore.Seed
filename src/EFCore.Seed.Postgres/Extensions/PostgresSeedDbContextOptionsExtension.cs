@@ -1,9 +1,9 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Extensions;
-using Daztane.EntityFrameworkCore.Seed.Postgres.Repositories;
-using Daztane.EntityFrameworkCore.Seed.Repositories;
+﻿using Authfix.EntityFrameworkCore.Seed.Extensions;
+using Authfix.EntityFrameworkCore.Seed.Postgres.Repositories;
+using Authfix.EntityFrameworkCore.Seed.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Daztane.EntityFrameworkCore.Seed.Postgres.Extensions
+namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
 {
     public class PostgresSeedDbContextOptionsExtension : SeedDbContextOptionsExtension
     {

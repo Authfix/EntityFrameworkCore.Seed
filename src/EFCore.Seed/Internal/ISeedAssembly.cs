@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 
-namespace Daztane.EntityFrameworkCore.Seed.Internal
+namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
     public interface ISeedAssembly
     {

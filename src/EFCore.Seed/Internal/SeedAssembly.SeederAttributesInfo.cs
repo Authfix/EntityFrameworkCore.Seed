@@ -1,8 +1,8 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Attributes;
+﻿using Authfix.EntityFrameworkCore.Seed.Attributes;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 
-namespace Daztane.EntityFrameworkCore.Seed.Internal
+namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
     public class SeederAttributesInfo
     {

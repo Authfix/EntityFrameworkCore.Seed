@@ -1,4 +1,4 @@
-using Daztane.EntityFrameworkCore.Seed.Postgres.Extensions;
+using Authfix.EntityFrameworkCore.Seed.Postgres.Extensions;
 using EFCore.Samples.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

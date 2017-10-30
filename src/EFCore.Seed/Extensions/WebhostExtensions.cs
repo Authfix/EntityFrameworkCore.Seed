@@ -1,9 +1,9 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Extensions;
+﻿using Authfix.EntityFrameworkCore.Seed.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Daztane.EntityFrameworkCore.Seed.Repositories
+namespace Authfix.EntityFrameworkCore.Seed.Repositories
 {
     public static class WebHostExtensions
     {

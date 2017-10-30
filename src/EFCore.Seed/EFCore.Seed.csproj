@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Daztane.EntityFrameworkCore.Seed</AssemblyName>
-    <RootNamespace>Daztane.EntityFrameworkCore.Seed</RootNamespace>
+    <AssemblyName>Authfix.EntityFrameworkCore.Seed</AssemblyName>
+    <RootNamespace>Authfix.EntityFrameworkCore.Seed</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>Authfix.EntityFrameworkCore.Seed</PackageId>
+    <Authors>Authfix.EntityFrameworkCore.Seed</Authors>
   </PropertyGroup>
 
   <ItemGroup>

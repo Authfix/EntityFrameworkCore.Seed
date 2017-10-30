@@ -1,5 +1,5 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Entities;
-using Daztane.EntityFrameworkCore.Seed.Repositories;
+﻿using Authfix.EntityFrameworkCore.Seed.Entities;
+using Authfix.EntityFrameworkCore.Seed.Repositories;
 
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Migrations.Internal;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations.Internal;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Daztane.EntityFrameworkCore.Seed.Postgres.Repositories
+namespace Authfix.EntityFrameworkCore.Seed.Postgres.Repositories
 {
     internal class PostgresSeedRepository : NpgsqlHistoryRepository, ISeedRepository
     {

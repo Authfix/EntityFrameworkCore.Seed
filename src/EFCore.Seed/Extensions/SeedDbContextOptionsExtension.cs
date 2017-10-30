@@ -1,9 +1,9 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Internal;
+﻿using Authfix.EntityFrameworkCore.Seed.Internal;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 
-namespace Daztane.EntityFrameworkCore.Seed.Extensions
+namespace Authfix.EntityFrameworkCore.Seed.Extensions
 {
     public abstract class SeedDbContextOptionsExtension : IDbContextOptionsExtension
     {

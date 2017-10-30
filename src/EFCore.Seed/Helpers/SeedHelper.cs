@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Daztane.EntityFrameworkCore.Seed.Helpers
+namespace Authfix.EntityFrameworkCore.Seed.Helpers
 {
     internal class SeedHelper
     {

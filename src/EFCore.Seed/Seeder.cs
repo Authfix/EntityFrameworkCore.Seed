@@ -1,7 +1,7 @@
-﻿using Daztane.EntityFrameworkCore.Seed.Entities;
-using Daztane.EntityFrameworkCore.Seed.Internal;
-using Daztane.EntityFrameworkCore.Seed.Models;
-using Daztane.EntityFrameworkCore.Seed.Repositories;
+﻿using Authfix.EntityFrameworkCore.Seed.Entities;
+using Authfix.EntityFrameworkCore.Seed.Internal;
+using Authfix.EntityFrameworkCore.Seed.Models;
+using Authfix.EntityFrameworkCore.Seed.Repositories;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Daztane.EntityFrameworkCore.Seed
+namespace Authfix.EntityFrameworkCore.Seed
 {
     public class Seeder : ISeeder
     {
