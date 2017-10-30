@@ -8,6 +8,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Authfix.EntityFrameworkCore.Seed</PackageId>
     <Authors>Authfix</Authors>
