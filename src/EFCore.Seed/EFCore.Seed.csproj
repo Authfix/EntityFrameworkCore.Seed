@@ -4,9 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Authfix.EntityFrameworkCore.Seed</AssemblyName>
     <RootNamespace>Authfix.EntityFrameworkCore.Seed</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
