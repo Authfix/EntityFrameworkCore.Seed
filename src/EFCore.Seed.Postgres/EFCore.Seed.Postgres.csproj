@@ -11,6 +11,7 @@
     <Authors>Authfix</Authors>
     <Company />
     <Copyright>Copyright ©  2017</Copyright>
+    <Description>Posgres provider for Authfix.EntityFrameworCore.Seed</Description>
   </PropertyGroup>
 
   <ItemGroup>
