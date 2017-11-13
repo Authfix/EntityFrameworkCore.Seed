@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Authfix.EntityFrameworkCore.Seed.InMemory</AssemblyName>
     <RootNamespace>Authfix.EntityFrameworkCore.Seed.InMemory</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Authors>Authfix</Authors>
     <Company />
     <Version>1.0.0</Version>
