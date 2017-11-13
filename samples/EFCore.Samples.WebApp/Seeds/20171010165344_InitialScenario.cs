@@ -11,7 +11,7 @@ namespace EFCore.Samples.WebApp.Seeds
         {
             var users = GetDbSet<User>();
 
-            for (int i = 0; i < 50; i++)
+            for (int i = 1; i < 50; i++)
             {
                 var newUser = new User
                 {

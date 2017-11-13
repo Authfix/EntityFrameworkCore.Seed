@@ -1,4 +1,5 @@
 using Authfix.EntityFrameworkCore.Seed.Postgres.Extensions;
+using Authfix.EntityFrameworkCore.Seed.InMemory.Extensions;
 using EFCore.Samples.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,9 +25,12 @@ namespace EFCore.Samples.WebApp
             services.AddMvc();
 
             services
+                //.AddEntityFrameworkInMemoryDatabase()
                 .AddEntityFrameworkNpgsql()
                 .AddDbContext<ApplicationDbContext>(options =>
                 {
+                    //options.UseInMemoryDatabase("Name");
+                    //options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName);
                     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
                     options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
                 });

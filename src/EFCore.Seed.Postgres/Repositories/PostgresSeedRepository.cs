@@ -20,6 +20,14 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Repositories
         }
 
         /// <summary>
+        /// Gets a value indicating whether this instance is in memory.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is in memory; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsInMemory => false;
+
+        /// <summary>
         /// Gets the table name
         /// </summary>
         protected override string TableName => Constants.DefaultTableName;

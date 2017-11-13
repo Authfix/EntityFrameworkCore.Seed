@@ -7,6 +7,14 @@ namespace Authfix.EntityFrameworkCore.Seed.Repositories
     public interface ISeedRepository
     {
         /// <summary>
+        /// Gets a value indicating whether this instance is in memory.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is in memory; otherwise, <c>false</c>.
+        /// </value>
+        bool IsInMemory { get; }
+
+        /// <summary>
         /// Check if the repository exists
         /// </summary>
         /// <returns></returns>

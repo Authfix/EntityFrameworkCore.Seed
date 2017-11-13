@@ -22,22 +22,12 @@ namespace Authfix.EntityFrameworkCore.Seed
         /// <summary>
         /// The database creator
         /// </summary>
-        private readonly IRelationalDatabaseCreator _databaseCreator;
-
-        /// <summary>
-        /// The raw SQL command builder
-        /// </summary>
-        private readonly IRawSqlCommandBuilder _rawSqlCommandBuilder;
-
+        private readonly IDatabaseCreator _databaseCreator;
+        
         /// <summary>
         /// The seed assembly
         /// </summary>
         private readonly ISeedAssembly _seedAssembly;
-
-        /// <summary>
-        /// The connection
-        /// </summary>
-        private readonly IRelationalConnection _connection;
 
         /// <summary>
         /// The service provider
@@ -49,12 +39,10 @@ namespace Authfix.EntityFrameworkCore.Seed
         /// </summary>
         /// <param name="seedRepository">The seed repository.</param>
         /// <param name="databaseCreator">The database creator.</param>
-        public Seeder(ISeedRepository seedRepository, IRelationalDatabaseCreator databaseCreator, IRelationalConnection connection, IRawSqlCommandBuilder rawSqlCommandBuilder, ISeedAssembly seedAssembly, IServiceProvider serviceProvider)
+        public Seeder(ISeedRepository seedRepository, IDatabaseCreator databaseCreator, ISeedAssembly seedAssembly, IServiceProvider serviceProvider)
         {
             _seedRepository = seedRepository;
             _databaseCreator = databaseCreator;
-            _connection = connection;
-            _rawSqlCommandBuilder = rawSqlCommandBuilder;
             _seedAssembly = seedAssembly;
             _serviceProvider = serviceProvider;
         }
@@ -66,14 +54,14 @@ namespace Authfix.EntityFrameworkCore.Seed
         {
             if (!_seedRepository.Exists())
             {
-                if (!_databaseCreator.Exists())
+                _databaseCreator.EnsureCreated();
+
+                if (!_seedRepository.IsInMemory)
                 {
-                    _databaseCreator.Create();
+                    var createScript = _seedRepository.GetCreateScript();
+
+                    ExecuteQuery(createScript);
                 }
-
-                var command = _rawSqlCommandBuilder.Build(_seedRepository.GetCreateScript());
-
-                command.ExecuteNonQuery(_connection);
             }
 
             var appliedSeeds = _seedRepository.GetAppliedSeeds();
@@ -116,11 +104,26 @@ namespace Authfix.EntityFrameworkCore.Seed
 
             concreteClass.SeedData();
 
-            var insertScript = _seedRepository.GetInsertScript(new SeedRow(availableSeed.SeederAttribute.SeedName, "1.0"));
+            if (!_seedRepository.IsInMemory)
+            {
+                var insertScript = _seedRepository.GetInsertScript(new SeedRow(availableSeed.SeederAttribute.SeedName, "1.0"));
 
-            var command = _rawSqlCommandBuilder.Build(insertScript);
+                ExecuteQuery(insertScript);
+            }
+        }
 
-            command.ExecuteNonQuery(_connection);
+        /// <summary>
+        /// Executes the query.
+        /// </summary>
+        /// <param name="scriptToExecute">The script to execute.</param>
+        private void ExecuteQuery(string scriptToExecute)
+        {
+            var sqlCommandBuilder = _serviceProvider.GetService<IRawSqlCommandBuilder>();
+            var connection = _serviceProvider.GetService<IRelationalConnection>();
+
+            var command = sqlCommandBuilder.Build(scriptToExecute);
+
+            command.ExecuteNonQuery(connection);
         }
     }
 }
