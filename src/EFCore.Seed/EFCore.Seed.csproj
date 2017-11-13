@@ -9,6 +9,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>Authfix.EntityFrameworkCore.Seed</PackageId>
     <Authors>Authfix</Authors>
+    <Description>Seed mechanism for Entity Framework Core.</Description>
   </PropertyGroup>
 
   <ItemGroup>
