@@ -1,4 +1,9 @@
-﻿using Authfix.EntityFrameworkCore.Seed.Entities;
+﻿//  
+// Copyright (c) Thomas Bailly. All rights reserved.  
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.  
+//
+
+using Authfix.EntityFrameworkCore.Seed.Entities;
 using System.Collections.Generic;
 
 namespace Authfix.EntityFrameworkCore.Seed.Repositories

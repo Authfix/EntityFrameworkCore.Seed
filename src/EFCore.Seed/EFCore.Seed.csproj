@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\..\EFCore.Seed.LicenseHeader" Link="EFCore.Seed.LicenseHeader" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions">
       <Version>2.0.0</Version>
     </PackageReference>
