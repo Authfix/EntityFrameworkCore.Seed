@@ -1,10 +1,9 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Attributes;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 
 namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
-    public class SeederAttributesInfo
+    internal class SeederAttributesInfo
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SeederAttributesInfo"/> class.

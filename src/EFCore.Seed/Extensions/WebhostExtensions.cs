@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Authfix.EntityFrameworkCore.Seed.Repositories
+namespace Authfix.EntityFrameworkCore.Seed.Extensions
 {
     public static class WebHostExtensions
     {

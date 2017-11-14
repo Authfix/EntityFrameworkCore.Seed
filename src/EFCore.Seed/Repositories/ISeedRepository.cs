@@ -1,5 +1,4 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Entities;
-
 using System.Collections.Generic;
 
 namespace Authfix.EntityFrameworkCore.Seed.Repositories

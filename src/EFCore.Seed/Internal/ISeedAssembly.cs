@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
-    public interface ISeedAssembly
+    internal interface ISeedAssembly
     {
         /// <summary>
         /// Gets the assembly.

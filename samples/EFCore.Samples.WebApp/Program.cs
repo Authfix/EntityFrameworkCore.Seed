@@ -1,4 +1,4 @@
-﻿using Authfix.EntityFrameworkCore.Seed.Repositories;
+﻿using Authfix.EntityFrameworkCore.Seed.Extensions;
 using EFCore.Samples.WebApp.Data;
 using EFCore.Samples.WebApp.Extensions;
 using Microsoft.AspNetCore;

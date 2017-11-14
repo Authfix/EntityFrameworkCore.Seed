@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace Authfix.EntityFrameworkCore.Seed
 {
-    public class Seeder : ISeeder
+    internal class Seeder : ISeeder
     {
         /// <summary>
         /// The seed repository

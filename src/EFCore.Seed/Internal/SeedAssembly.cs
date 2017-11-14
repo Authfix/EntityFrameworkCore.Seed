@@ -1,12 +1,11 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Attributes;
-
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace Authfix.EntityFrameworkCore.Seed.Internal
 {
-    public partial class SeedAssembly : ISeedAssembly
+    internal partial class SeedAssembly : ISeedAssembly
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SeedAssembly"/> class.
