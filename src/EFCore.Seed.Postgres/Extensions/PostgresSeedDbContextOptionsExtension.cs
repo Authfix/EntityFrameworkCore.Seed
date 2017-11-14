@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
 {
-    public class PostgresSeedDbContextOptionsExtension : SeedDbContextOptionsExtension
+    internal class PostgresSeedDbContextOptionsExtension : SeedDbContextOptionsExtension
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PostgresSeedDbContextOptionsExtension"/> class.
