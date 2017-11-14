@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Authfix.EntityFrameworkCore.Seed.InMemory.Extensions
 {
-    public class InMemorySeedDbContextOptionsExtension : SeedDbContextOptionsExtension
+    internal class InMemorySeedDbContextOptionsExtension : SeedDbContextOptionsExtension
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InMemorySeedDbContextOptionsExtension"/> class.
