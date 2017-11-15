@@ -9,7 +9,7 @@ using System;
 
 namespace Authfix.EntityFrameworkCore.Seed.Extensions
 {
-    internal static class DatabaseFacadeExtensions
+    public static class DatabaseFacadeExtensions
     {
         /// <summary>
         /// Seeds the specified database facade.
