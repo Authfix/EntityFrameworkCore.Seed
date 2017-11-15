@@ -15,10 +15,12 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
         /// </summary>
         /// <param name="dbContextOptionBuilder">The database context option builder.</param>
         /// <param name="seedAssembly">The seed assembly.</param>
-        public static void UseNpgsqlSeed(this DbContextOptionsBuilder dbContextOptionBuilder, string seedAssembly)
+        public static DbContextOptionsBuilder UseNpgsqlSeed(this DbContextOptionsBuilder dbContextOptionBuilder, string seedAssembly)
         {
             var extension = GetOrCreateExtension(dbContextOptionBuilder, seedAssembly);
             ((IDbContextOptionsBuilderInfrastructure)dbContextOptionBuilder).AddOrUpdateExtension(extension);
+
+            return dbContextOptionBuilder;
         }
 
         /// <summary>
