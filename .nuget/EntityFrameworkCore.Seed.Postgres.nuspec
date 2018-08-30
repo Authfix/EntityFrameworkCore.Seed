@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Postgresql support for package Authfix.EntityFrameworkCore.Seed.</description>
     <dependencies>
-      <dependency id="Authfix.EntityFrameworkCore.Seed" version="1.0.0-*" />
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="1.0.0-beta0030" />
     </dependencies>
   </metadata>
   <files>
