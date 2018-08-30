@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>Authfix</authors>
     <licenseUrl>https://github.com/Authfix/EntityFrameworkCore.Seed/blob/release/1.0.0.0/LICENSE.md</licenseUrl>
-    <projectUrl>https://github.com/city-os/FileServer</projectUrl>
+    <projectUrl>https://github.com/Authfix/EntityFrameworkCore.Seed</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Postgresql support for package Authfix.EntityFrameworkCore.Seed.</description>
     <dependencies>
