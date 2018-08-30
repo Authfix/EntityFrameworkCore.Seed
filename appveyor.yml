@@ -31,5 +31,5 @@ skip_commits:
 
 branches:
   only:
-    - /release/*
+    - /release/
     - master
