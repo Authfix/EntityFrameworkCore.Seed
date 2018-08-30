@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Authfix.EntityFrameworkCore.Seed.Postgres</id>
+    <version>1.0.0</version>
+    <authors>Authfix</authors>
+    <licenseUrl>https://github.com/Authfix/EntityFrameworkCore.Seed/blob/release/1.0.0.0/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/city-os/FileServer</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Postgresql support for package Authfix.EntityFrameworkCore.Seed.</description>
+    <dependencies>
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\EFCore.Seed.Postgres\bin\Release\netstandard2.0\Authfix.EntityFrameworkCore.Seed.Postgres.dll" target="lib\netstandard2.0\Authfix.EntityFrameworkCore.Seed.Postgres.dll" />
+  </files>
+</package>

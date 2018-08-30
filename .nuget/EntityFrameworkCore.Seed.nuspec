@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Authfix.EntityFrameworkCore.Seed</id>
+    <version>1.0.0</version>
+    <authors>Authfix</authors>
+    <licenseUrl>https://github.com/Authfix/EntityFrameworkCore.Seed/blob/release/1.0.0.0/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Authfix/EntityFrameworkCore.Seed</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This project is not an official entity framework core library. It aims to give the ability to seed values inside the database for testing/integration purpose.</description>
+    <dependencies>
+      <dependency id="Microsoft.EntityFrameworkCore" version="2.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\EFCore.Seed\bin\Release\netstandard2.0\Authfix.EntityFrameworkCore.Seed.dll" target="lib\netstandard2.0\Authfix.EntityFrameworkCore.Seed.dll" />
+  </files>
+</package>
