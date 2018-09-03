@@ -17,9 +17,10 @@ namespace EFCore.Samples.WebApp
             var webHost = BuildWebHost(args);
 
             // only for postgres
-            webHost.MigrateDatabase();
+            // webHost.MigrateDatabase();
 
             webHost.SeedData<ApplicationDbContext>();
+            webHost.SeedData<AnotherDbContext>();
 
             webHost.Run();
         }

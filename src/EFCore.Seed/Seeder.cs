@@ -71,7 +71,10 @@ namespace Authfix.EntityFrameworkCore.Seed
 
             var appliedSeeds = _seedRepository.GetAppliedSeeds();
 
-            var availableSeeds = _seedAssembly.GetAvailableSeeds();
+            var currentContext = _serviceProvider.GetService<ICurrentDbContext>();
+            var contextType = currentContext.Context.GetType();
+
+            var availableSeeds = _seedAssembly.GetAvailableSeeds(contextType.Name);
 
             ApplySeeds(availableSeeds, appliedSeeds);
         }

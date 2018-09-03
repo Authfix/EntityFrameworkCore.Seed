@@ -25,14 +25,21 @@ namespace EFCore.Samples.WebApp
             services.AddMvc();
 
             services
-                //.AddEntityFrameworkInMemoryDatabase()
-                .AddEntityFrameworkNpgsql()
+                .AddEntityFrameworkInMemoryDatabase()
+                //.AddEntityFrameworkNpgsql()
+                .AddDbContext<AnotherDbContext>(options =>
+                {
+                    options.UseInMemoryDatabase("Name");
+                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName);
+                    //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                    //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
+                })
                 .AddDbContext<ApplicationDbContext>(options =>
                 {
-                    //options.UseInMemoryDatabase("Name");
-                    //options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName);
-                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-                    options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
+                    options.UseInMemoryDatabase("Name");
+                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName);
+                    //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                    //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
                 });
         }
 

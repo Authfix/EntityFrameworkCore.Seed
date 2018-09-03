@@ -23,6 +23,6 @@ namespace Authfix.EntityFrameworkCore.Seed.Internal
         /// </summary>
         /// <param name="options">The options.</param>
         /// <returns></returns>
-        IEnumerable<SeederAttributesInfo> GetAvailableSeeds();
+        IEnumerable<SeederAttributesInfo> GetAvailableSeeds(string dbContextType);
     }
 }
