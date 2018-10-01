@@ -74,7 +74,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Models
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        protected DbSet<T> GetDbSet<T>() where T : class, new()
+        protected DbSet<T> GetDbSet<T>() where T : class
         {
             return _dbContext.Set<T>();
         }
