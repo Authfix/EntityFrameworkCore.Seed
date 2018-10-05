@@ -105,7 +105,9 @@ namespace Authfix.EntityFrameworkCore.Seed
         private void RunSeed(SeederAttributesInfo availableSeed)
         {
             var currentContext = _serviceProvider.GetService<ICurrentDbContext>();
-            var logger = _serviceProvider.GetService<ILogger<Seeder>>();
+
+            var loggerFactory = _serviceProvider.GetService<ILoggerFactory>();
+            var logger = loggerFactory.CreateLogger<Seeder>();
 
             var concreteClass = Activator.CreateInstance(availableSeed.ConcreteType) as SeederBase;
             concreteClass.SetDependencies(logger, currentContext.Context);
