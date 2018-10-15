@@ -29,6 +29,11 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Extensions
         public override string SeedProviderName => "InMemory";
 
         /// <summary>
+        /// Gets value indicating if that the provider is an in memory provider or not
+        /// </summary>
+        public override bool IsInMemoryProvider => true;
+
+        /// <summary>
         /// Applies the services.
         /// </summary>
         /// <param name="services">The services.</param>

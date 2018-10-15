@@ -28,6 +28,12 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
         /// </value>
         public override string SeedProviderName => "Postgres";
 
+
+        /// <summary>
+        /// Gets value indicating if the provider is an in memory provider or not
+        /// </summary>
+        public override bool IsInMemoryProvider => false;
+
         /// <summary>
         /// Applies the services.
         /// </summary>

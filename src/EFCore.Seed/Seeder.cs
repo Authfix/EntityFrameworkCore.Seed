@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Authfix.EntityFrameworkCore.Seed.Configuration;
 
 namespace Authfix.EntityFrameworkCore.Seed
 {
@@ -105,12 +106,13 @@ namespace Authfix.EntityFrameworkCore.Seed
         private void RunSeed(SeederAttributesInfo availableSeed)
         {
             var currentContext = _serviceProvider.GetService<ICurrentDbContext>();
+            var currentConfiguration = _serviceProvider.GetService<SeedConfiguration>();
 
             var loggerFactory = _serviceProvider.GetService<ILoggerFactory>();
             var logger = loggerFactory.CreateLogger<Seeder>();
 
             var concreteClass = Activator.CreateInstance(availableSeed.ConcreteType) as SeederBase;
-            concreteClass.SetDependencies(logger, currentContext.Context);
+            concreteClass.SetDependencies(logger, currentContext.Context, currentConfiguration);
 
             concreteClass.SeedData();
 

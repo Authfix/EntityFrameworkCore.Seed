@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using Authfix.EntityFrameworkCore.Seed.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -24,14 +25,19 @@ namespace Authfix.EntityFrameworkCore.Seed.Models
         /// <summary>
         /// The logger
         /// </summary>
-        protected ILogger Logger;
+        protected ILogger Logger { get; private set; }
+
+        /// <summary>
+        /// Gets the current seed configuration
+        /// </summary>
+        protected SeedConfiguration Configuration { get; private set; }
 
         /// <summary>
         /// Sets the dependencies.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="dbContext">The database context.</param>
-        internal void SetDependencies(ILogger logger, DbContext dbContext)
+        internal void SetDependencies(ILogger logger, DbContext dbContext, SeedConfiguration seedConfiguration)
         {
             if (_dependenciesAlreadySet)
             {
@@ -39,6 +45,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Models
             }
 
             Logger = logger;
+            Configuration = seedConfiguration;
             _dbContext = dbContext;
 
             _dependenciesAlreadySet = true;

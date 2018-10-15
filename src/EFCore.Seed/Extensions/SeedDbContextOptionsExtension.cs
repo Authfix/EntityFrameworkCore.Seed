@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using Authfix.EntityFrameworkCore.Seed.Configuration;
 using Authfix.EntityFrameworkCore.Seed.Internal;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -57,6 +58,11 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
         public abstract string SeedProviderName { get; }
 
         /// <summary>
+        /// Gets value indicating if the provider is an in memory provider
+        /// </summary>
+        public virtual bool IsInMemoryProvider { get; }
+
+        /// <summary>
         /// Adds the services required to make the selected options work. This is used when there
         /// is no external <see cref="T:System.IServiceProvider" /> and EF is maintaining its own service
         /// provider internally. This allows database providers (and other extensions) to register their
@@ -70,6 +76,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
         {
             services.AddScoped<ISeeder, Seeder>();
             services.AddSingleton<ISeedAssembly>(new SeedAssembly(_seedAssembly));
+            services.AddSingleton(new SeedConfiguration(IsInMemoryProvider));
 
             return true;
         }
