@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This project is not an official entity framework core library. It aims to give the ability to seed values inside the database for testing/integration purpose.</description>
     <dependencies>
-      <dependency id="Microsoft.EntityFrameworkCore" version="2.0.0" />
+      <dependency id="Microsoft.EntityFrameworkCore" version="2.1.0" />
     </dependencies>
   </metadata>
   <files>
