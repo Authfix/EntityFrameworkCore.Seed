@@ -1,4 +1,4 @@
-﻿using EFCore.Samples.WebApp.Models;
+﻿using EFCore.Samples.WebApp.Entities;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 

@@ -13,7 +13,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
     public static class WebHostExtensions
     {
         /// <summary>
-        /// Seeds the data.
+        /// Seeds the data for a specific <see cref="DbContext"/>.
         /// </summary>
         /// <param name="webHost">The web host.</param>
         public static void SeedData<T>(this IWebHost webHost) where T : DbContext

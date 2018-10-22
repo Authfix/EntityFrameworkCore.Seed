@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Seed", "src\EFCore.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Seed.Postgres", "src\EFCore.Seed.Postgres\EFCore.Seed.Postgres.csproj", "{67663BFB-15AB-48C4-B1C8-2821655B61CC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1EE653A1-A09A-4F71-9A91-0A02C6F64739}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{1EE653A1-A09A-4F71-9A91-0A02C6F64739}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FE3A5E67-520C-442E-A9AD-3538C4E795C0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Samples.WebApp", "samples\EFCore.Samples.WebApp\EFCore.Samples.WebApp.csproj", "{8EEFE068-6D2F-4CB4-AAA2-97AAFDE6B518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Seed.InMemory", "src\EFCore.Seed.InMemory\EFCore.Seed.InMemory.csproj", "{C4231D06-FD6B-42F8-9FE6-CB4896891455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Seed.InMemory", "src\EFCore.Seed.InMemory\EFCore.Seed.InMemory.csproj", "{C4231D06-FD6B-42F8-9FE6-CB4896891455}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

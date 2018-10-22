@@ -3,49 +3,43 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
-using Authfix.EntityFrameworkCore.Seed.Extensions;
-using Authfix.EntityFrameworkCore.Seed.Postgres.Repositories;
-using Authfix.EntityFrameworkCore.Seed.Repositories;
-using Microsoft.Extensions.DependencyInjection;
+using Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure;
+using Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 
 namespace Authfix.EntityFrameworkCore.Seed.Postgres.Extensions
 {
-    internal class PostgresSeedDbContextOptionsExtension : SeedDbContextOptionsExtension
+    public static class PostgresSeedDbContextOptionsExtension
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostgresSeedDbContextOptionsExtension"/> class.
+        /// Specify usage of the in memory seed
         /// </summary>
-        /// <param name="seedAssembly">The seed assembly.</param>
-        public PostgresSeedDbContextOptionsExtension(string seedAssembly) : base(seedAssembly)
-        {
-        }
-
-        /// <summary>
-        /// Gets the name of the seed provider.
-        /// </summary>
-        /// <value>
-        /// The name of the seed provider.
-        /// </value>
-        public override string SeedProviderName => "Postgres";
-
-
-        /// <summary>
-        /// Gets value indicating if the provider is an in memory provider or not
-        /// </summary>
-        public override bool IsInMemoryProvider => false;
-
-        /// <summary>
-        /// Applies the services.
-        /// </summary>
-        /// <param name="services">The services.</param>
+        /// <param name="optionsBuilder"></param>
+        /// <param name="seedAssemblyName"></param>
+        /// <param name="inMemorySeedOptionsAction"></param>
         /// <returns></returns>
-        public override bool ApplyServices(IServiceCollection services)
+        public static DbContextOptionsBuilder UseNpgsqlSeed(this DbContextOptionsBuilder optionsBuilder, string seedAssemblyName, Action<PostgresSeedDbContextOptionsBuilder> postgresSeedOptionsAction = null)
         {
-            base.ApplyServices(services);
+            var extension = (PostgresSeedOptionsExtension)GetOrCreateExtension(optionsBuilder).WithSeedAssemblyName(seedAssemblyName);
+            ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
 
-            services.AddScoped<ISeedRepository, PostgresSeedRepository>();
+            postgresSeedOptionsAction?.Invoke(new PostgresSeedDbContextOptionsBuilder(optionsBuilder));
 
-            return true; 
+            return optionsBuilder;
         }
+
+        /// <summary>
+        /// Returns an existing instance of <see cref="InMemorySeedOptionsExtension"/>, or a new instance if one does not exist.
+        /// </summary>
+        /// <param name="optionsBuilder">The <see cref="DbContextOptionsBuilder"/> to search.</param>
+        /// <returns>
+        /// An existing instance of <see cref="InMemorySeedOptionsExtension"/>, or a new instance if one does not exist.
+        /// </returns>
+        private static PostgresSeedOptionsExtension GetOrCreateExtension(DbContextOptionsBuilder optionsBuilder)
+            => optionsBuilder.Options.FindExtension<PostgresSeedOptionsExtension>() is PostgresSeedOptionsExtension existing
+                ? new PostgresSeedOptionsExtension(existing)
+                : new PostgresSeedOptionsExtension();
     }
 }
