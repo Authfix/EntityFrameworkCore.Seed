@@ -82,7 +82,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         /// </summary>
         public ISeedConfiguration SeedConfiguration
         {
-            get { return new SeedConfiguration(_parameters); }
+            get { return new SeedConfiguration(IsInMemoryProvider, _parameters); }
         }
 
 

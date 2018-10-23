@@ -13,5 +13,10 @@ namespace Authfix.EntityFrameworkCore.Seed.Script
         /// <typeparam name="TConfiguration">The configuration type</typeparam>
         /// <returns></returns>
         TConfiguration Get<TConfiguration>();
+
+        /// <summary>
+        /// Gets value indicating if the current provider is in memory or not
+        /// </summary>
+        bool IsInMemory { get; }
     }
 }

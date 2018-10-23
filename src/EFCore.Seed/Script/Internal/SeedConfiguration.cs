@@ -9,10 +9,12 @@ namespace Authfix.EntityFrameworkCore.Seed.Script.Internal
 {
     internal class SeedConfiguration : Dictionary<string, object>, ISeedConfiguration
     {
-        public SeedConfiguration(Dictionary<string, object> parameters) : base(parameters)
+        public SeedConfiguration(bool isInMemory, Dictionary<string, object> parameters) : base(parameters)
         {
-
+            IsInMemory = isInMemory;
         }
+
+        public bool IsInMemory { get; }
 
         public TConfiguration Get<TConfiguration>()
         {
