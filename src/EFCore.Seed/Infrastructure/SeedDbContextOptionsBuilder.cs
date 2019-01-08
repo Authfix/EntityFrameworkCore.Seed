@@ -47,6 +47,9 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         public virtual TBuilder AddParameter<TParameter>(Func<TParameter> parameter)
             => WithOption(e => (TExtension)e.WithParameter(parameter));
 
+        public virtual TBuilder UseServiceProvider(IServiceProvider serviceProvider)
+            => WithOption(e => (TExtension)e.WithServiceProvider(serviceProvider));
+
         /// <summary>
         /// Sets an option by cloning the extension used to store the settings. This ensures the builder
         /// does not modify options that are already in use elsewhere.

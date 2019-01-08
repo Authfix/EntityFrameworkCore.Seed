@@ -8,7 +8,6 @@ using Authfix.EntityFrameworkCore.Seed.Script.Internal;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
@@ -21,16 +20,16 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         private string _seedAssemblyName;
 
         /// <summary>
-        /// The seed parameters
+        /// The service resolver
         /// </summary>
-        private readonly Dictionary<string, object> _parameters;
+        private IServiceProvider _serviceProvider;
 
         /// <summary>
         /// Initialize default <see cref="SeedOptionsExtension"/>
         /// </summary>
         protected SeedOptionsExtension()
         {
-            _parameters = new Dictionary<string, object>();
+            _serviceProvider = new DefaultServiceProvider();
         }
 
         /// <summary>
@@ -40,7 +39,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         public SeedOptionsExtension(SeedOptionsExtension copyFrom)
         {
             _seedAssemblyName = copyFrom._seedAssemblyName;
-            _parameters = new Dictionary<string, object>(copyFrom._parameters);
+            _serviceProvider = copyFrom._serviceProvider;
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         /// </summary>
         public ISeedConfiguration SeedConfiguration
         {
-            get { return new SeedConfiguration(IsInMemoryProvider, _parameters); }
+            get { return new SeedConfiguration(IsInMemoryProvider, _serviceProvider); }
         }
 
 
@@ -107,6 +106,21 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         }
 
         /// <summary>
+        /// Use a specific service provider. 
+        /// If you call this method, you can't use WithParameter method anymore
+        /// </summary>
+        /// <param name="serviceProvider">The service provider to use</param>
+        /// <returns></returns>
+        public SeedOptionsExtension WithServiceProvider(IServiceProvider serviceProvider)
+        {
+            var clone = Clone();
+
+            clone._serviceProvider = serviceProvider;
+
+            return clone;
+        }
+
+        /// <summary>
         /// Return a copy of the options with the new parameter
         /// </summary>
         /// <typeparam name="TParameter">The parameter type</typeparam>
@@ -114,11 +128,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         /// <returns></returns>
         public SeedOptionsExtension WithParameter<TParameter>(TParameter parameter)
         {
-            var clone = Clone();
-
-            clone._parameters.Add(parameter.GetType().FullName, parameter);
-
-            return clone;
+            return WithParameter(() => parameter);
         }
 
         /// <summary>
@@ -131,7 +141,14 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         {
             var clone = Clone();
 
-            clone._parameters.Add(typeof(TParameter).FullName, factory);
+            var updatableServiceProvider = _serviceProvider as IUpdatableServiceProvider;
+
+            if(updatableServiceProvider == null)
+            {
+                throw new InvalidSeedException("You cannot add parameter if you use UseServiceProvider method");
+            }
+
+            updatableServiceProvider.AddService(typeof(TParameter).FullName, factory);
 
             return clone;
         }

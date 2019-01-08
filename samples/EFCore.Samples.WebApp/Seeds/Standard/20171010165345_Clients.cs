@@ -1,4 +1,5 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Script;
+using EFCore.Samples.WebApp.Configuration;
 using EFCore.Samples.WebApp.Data;
 using EFCore.Samples.WebApp.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace EFCore.Samples.WebApp.Seeds.Standard
     {
         public Seed_20171010165345_Clients(DbContext dbContext, ILogger logger, ISeedConfiguration seedConfiguration) : base(dbContext, logger, seedConfiguration)
         {
+            var a = seedConfiguration.Get<IAppConfiguration>();
         }
 
         protected override void UpdateEntities()

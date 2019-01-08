@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using EFCore.Samples.WebApp.Seeds;
 using System;
+using EFCore.Samples.WebApp.Configuration;
 
 namespace EFCore.Samples.WebApp
 {
@@ -26,6 +27,8 @@ namespace EFCore.Samples.WebApp
         {
             services.AddMvc();
 
+            services.AddSingleton<IAppConfiguration, AppConfiguration>();
+
             services
                 .AddEntityFrameworkInMemoryDatabase()
                 //.AddEntityFrameworkNpgsql()
@@ -34,7 +37,7 @@ namespace EFCore.Samples.WebApp
                     options.UseInMemoryDatabase("Name");
                     options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
                     {
-                        o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
+                        o.UseServiceProvider(services.BuildServiceProvider());
                     });
                     //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
                     //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
@@ -42,7 +45,10 @@ namespace EFCore.Samples.WebApp
                 .AddDbContext<ApplicationDbContext>(options =>
                 {
                     options.UseInMemoryDatabase("Name");
-                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName);
+                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
+                    {
+                        o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
+                    });
                     //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
                     //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
                 });

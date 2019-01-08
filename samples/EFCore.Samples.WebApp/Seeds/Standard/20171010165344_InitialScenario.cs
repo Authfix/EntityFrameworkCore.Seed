@@ -13,6 +13,7 @@ namespace EFCore.Samples.WebApp.Seeds.Standard
     {
         public Seed_20171010165344_InitialScenario(DbContext dbContext, ILogger logger, ISeedConfiguration seedConfiguration) : base(dbContext, logger, seedConfiguration)
         {
+            var a = seedConfiguration.Get<IdentityConfiguration>();
         }
 
         protected override void UpdateEntities()
