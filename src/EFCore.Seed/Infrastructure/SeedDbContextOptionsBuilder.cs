@@ -39,6 +39,15 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
             => WithOption(e => (TExtension)e.WithParameter(parameter));
 
         /// <summary>
+        /// Add parameter used for seed to the database options
+        /// </summary>
+        /// <typeparam name="TParameter">The parameter type.</typeparam>
+        /// <param name="parameter">The parameter to add</param>
+        /// <returns>The same builder for chaining purpose.</returns>
+        public virtual TBuilder AddParameter<TParameter>(Func<TParameter> parameter)
+            => WithOption(e => (TExtension)e.WithParameter(parameter));
+
+        /// <summary>
         /// Sets an option by cloning the extension used to store the settings. This ensures the builder
         /// does not modify options that are already in use elsewhere.
         /// </summary>

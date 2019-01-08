@@ -122,6 +122,21 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         }
 
         /// <summary>
+        /// Return a copy of the options with the new parameter
+        /// </summary>
+        /// <typeparam name="TParameter">The parameter type</typeparam>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public SeedOptionsExtension WithParameter<TParameter>(Func<TParameter> factory)
+        {
+            var clone = Clone();
+
+            clone._parameters.Add(typeof(TParameter).FullName, factory);
+
+            return clone;
+        }
+
+        /// <summary>
         /// Add specific services
         /// </summary>
         /// <param name="services">The existing service collection</param>

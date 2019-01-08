@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using System;
 using System.Collections.Generic;
 
 namespace Authfix.EntityFrameworkCore.Seed.Script.Internal
@@ -22,6 +23,9 @@ namespace Authfix.EntityFrameworkCore.Seed.Script.Internal
 
             if (ContainsKey(confType))
             {
+                if (this[confType] is Func<TConfiguration> x)
+                    return x.Invoke();
+
                 return (TConfiguration)this[confType];
             }
 
