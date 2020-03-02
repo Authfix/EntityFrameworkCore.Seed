@@ -1,0 +1,35 @@
+install:
+  - choco install gitversion.portable -pre -y
+
+assembly_info:
+  patch: false
+
+before_build:
+  - dotnet restore
+  - ps: gitversion /l console /output buildserver /updateAssemblyInfo
+
+build_script:
+  - ps: dotnet build /p:GenerateAssemblyInfo=false --configuration release --no-restore
+
+after_build:
+  - cmd: nuget pack .nuget/EntityFrameworkCore.Seed.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+
+deploy:
+  - provider: NuGet
+    api_key:
+      secure: qN/9IE6xYz6zeFYPTvP93MOIyxGd5/mDun2Sq02pyLTuuiPXv9E+tYnFqG4IoSxy
+    skip_symbols: true
+
+artifacts:
+  - path: '*.nupkg'
+    name: Authfix.EntityFrameworkCore.Seed
+
+skip_commits:
+  files:
+    - src/EFCore.Seed.InMemory/
+    - src/EFCore.Seed.Postgres/
+
+branches:
+  only:
+    - /release/
+    - master

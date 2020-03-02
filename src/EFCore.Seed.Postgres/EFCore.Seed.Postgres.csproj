@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Authfix.EntityFrameworkCore.Seed.Postgres</AssemblyName>
+    <RootNamespace>Authfix.EntityFrameworkCore.Seed.Postgres</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>Authfix.EntityFrameworkCore.Seed.Postgres</PackageId>
+    <Authors>Authfix</Authors>
+    <Company />
+    <Copyright>Copyright ©  2017</Copyright>
+    <Description>Posgres provider for Authfix.EntityFrameworCore.Seed</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\EFCore.Seed.LicenseHeader" Link="EFCore.Seed.LicenseHeader" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.1.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EFCore.Seed\EFCore.Seed.csproj" />
+  </ItemGroup>
+
+</Project>
