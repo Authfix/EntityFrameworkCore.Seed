@@ -84,6 +84,11 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
             get { return new SeedConfiguration(IsInMemoryProvider, _serviceProvider); }
         }
 
+        /// <summary>
+        /// Gets the info
+        /// </summary>
+        public abstract DbContextOptionsExtensionInfo Info { get; }
+
 
         /// <summary>
         ///     Override this method in a derived class to ensure that any clone created is also of that class.
@@ -158,7 +163,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
         /// </summary>
         /// <param name="services">The existing service collection</param>
         /// <returns></returns>
-        public virtual bool ApplyServices(IServiceCollection services)
+        public virtual void ApplyServices(IServiceCollection services)
         {
             if (IsInMemoryProvider)
                 services.AddScoped<ISeeder, Seeder>();
@@ -166,8 +171,6 @@ namespace Authfix.EntityFrameworkCore.Seed.Infrastructure
                 services.AddScoped<ISeeder, RelationalSeeder>();
 
             services.AddScoped<ISeedAssembly, SeedAssembly>(sp => new SeedAssembly(_seedAssemblyName));
-
-            return true;
         }
 
         /// <summary>

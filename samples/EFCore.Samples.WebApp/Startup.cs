@@ -10,6 +10,7 @@ using System.Reflection;
 using EFCore.Samples.WebApp.Seeds;
 using System;
 using EFCore.Samples.WebApp.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace EFCore.Samples.WebApp
 {
@@ -25,7 +26,10 @@ namespace EFCore.Samples.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            });
 
             services.AddSingleton<IAppConfiguration, AppConfiguration>();
 
@@ -59,12 +63,11 @@ namespace EFCore.Samples.WebApp
         /// </summary>
         /// <param name="app">The application.</param>
         /// <param name="env">The env.</param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
