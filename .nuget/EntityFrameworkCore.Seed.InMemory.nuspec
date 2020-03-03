@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>In memory support for package Authfix.EntityFrameworkCore.Seed.</description>
     <dependencies>
-      <dependency id="Authfix.EntityFrameworkCore.Seed" version="1.0.0-beta0047" />
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="3.1.0" />
       <dependency id="Microsoft.EntityFrameworkCore.InMemory" version="3.1.2" />
     </dependencies>
   </metadata>
