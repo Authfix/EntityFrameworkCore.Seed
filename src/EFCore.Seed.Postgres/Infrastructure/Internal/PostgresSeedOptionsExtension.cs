@@ -62,7 +62,6 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
 
         private sealed class ExtensionInfo : DbContextOptionsExtensionInfo
         {
-            private string _logFragment;
 
             public ExtensionInfo(IDbContextOptionsExtension extension) : base(extension)
             {
@@ -76,19 +75,18 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
             {
                 get
                 {
-                    if (_logFragment == null)
-                    {
-                        var builder = new StringBuilder();
-
-                        builder.Append("StoreName=").Append(Extension.SeedProviderName).Append(' ');
-
-                        _logFragment = builder.ToString();
-                    }
-
-                    return _logFragment;
+                    return Extension.LogFragment;
                 }
             }
 
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <remarks>
+            /// Returns a hash code created from any options that would cause a new <see cref="IServiceProvider" />
+            /// to be needed. Most extensions do not have any such options and should return zero.
+            /// </remarks>
+            /// <returns></returns>
             public override long GetServiceProviderHashCode()
             {
                 return 0L;
@@ -96,6 +94,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
 
             public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
             {
+                debugInfo["Postgresql"] = "1";
             }
         }
     }

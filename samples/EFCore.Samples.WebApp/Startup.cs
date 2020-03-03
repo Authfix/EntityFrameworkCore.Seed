@@ -38,7 +38,7 @@ namespace EFCore.Samples.WebApp
                 //.AddEntityFrameworkNpgsql()
                 .AddDbContext<AnotherDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("Name");
+                    options.UseInMemoryDatabase("MemoryDB");
                     options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
                     {
                         o.UseServiceProvider(services.BuildServiceProvider());
@@ -48,7 +48,7 @@ namespace EFCore.Samples.WebApp
                 })
                 .AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseInMemoryDatabase("Name");
+                    options.UseInMemoryDatabase("MemoryDB");
                     options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
                     {
                         o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));

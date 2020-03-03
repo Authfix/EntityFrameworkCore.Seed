@@ -67,8 +67,6 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
 
         private sealed class ExtensionInfo : DbContextOptionsExtensionInfo
         {
-            private string _logFragment;
-
             public ExtensionInfo(IDbContextOptionsExtension extension) : base(extension)
             {
             }
@@ -81,16 +79,7 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
             {
                 get
                 {
-                    if(_logFragment == null)
-                    {
-                        var builder = new StringBuilder();
-
-                        builder.Append("StoreName=").Append(Extension.SeedProviderName).Append(' ');
-
-                        _logFragment = builder.ToString();
-                    }
-
-                    return _logFragment;
+                    return Extension.LogFragment;
                 }
             }
 
@@ -101,6 +90,7 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
 
             public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
             {
+                debugInfo["InMemory"] = "1";
             }
         }
     }
