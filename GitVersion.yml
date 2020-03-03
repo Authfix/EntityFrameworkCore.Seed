@@ -1,4 +1,5 @@
 mode: ContinuousDeployment
 branches: {}
+increment: None
 ignore:
   sha: []

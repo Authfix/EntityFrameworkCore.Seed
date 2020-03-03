@@ -6,7 +6,10 @@
 using Authfix.EntityFrameworkCore.Seed.Infrastructure;
 using Authfix.EntityFrameworkCore.Seed.Postgres.Script.Internal;
 using Authfix.EntityFrameworkCore.Seed.Script;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
 {
@@ -37,18 +40,18 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
         /// </summary>
         public override bool IsInMemoryProvider => false;
 
+        public override DbContextOptionsExtensionInfo Info => new ExtensionInfo(this);
+
         /// <summary>
         /// Add specific services
         /// </summary>
         /// <param name="services">The existing service collection</param>
         /// <returns></returns>
-        public override bool ApplyServices(IServiceCollection services)
+        public override void ApplyServices(IServiceCollection services)
         {
             base.ApplyServices(services);
 
             services.AddScoped<ISeedRepository, PostgresSeedRepository>();
-
-            return true;
         }
 
         /// <summary>
@@ -56,5 +59,43 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Infrastructure.Internal
         /// </summary>
         /// <returns></returns>
         protected override SeedOptionsExtension Clone() => new PostgresSeedOptionsExtension(this);
+
+        private sealed class ExtensionInfo : DbContextOptionsExtensionInfo
+        {
+
+            public ExtensionInfo(IDbContextOptionsExtension extension) : base(extension)
+            {
+            }
+
+            private new PostgresSeedOptionsExtension Extension => (PostgresSeedOptionsExtension)base.Extension;
+
+            public override bool IsDatabaseProvider => false;
+
+            public override string LogFragment
+            {
+                get
+                {
+                    return Extension.LogFragment;
+                }
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <remarks>
+            /// Returns a hash code created from any options that would cause a new <see cref="IServiceProvider" />
+            /// to be needed. Most extensions do not have any such options and should return zero.
+            /// </remarks>
+            /// <returns></returns>
+            public override long GetServiceProviderHashCode()
+            {
+                return 0L;
+            }
+
+            public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
+            {
+                debugInfo["Postgresql"] = "1";
+            }
+        }
     }
 }

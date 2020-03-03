@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -70,7 +71,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Script.Internal
 
             var command = sqlCommandBuilder.Build(scriptToExecute);
 
-            command.ExecuteNonQuery(connection);
+            command.ExecuteNonQuery(new RelationalCommandParameterObject(connection, null, null, _currentDbContext.Context, null));
         }
     }
 }

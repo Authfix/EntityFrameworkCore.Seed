@@ -6,12 +6,17 @@
 using Authfix.EntityFrameworkCore.Seed.Infrastructure;
 using Authfix.EntityFrameworkCore.Seed.InMemory.Script.Internal;
 using Authfix.EntityFrameworkCore.Seed.Script;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
 {
     public class InMemorySeedOptionsExtension : SeedOptionsExtension
     {
+        private DbContextOptionsExtensionInfo _info;
+
         /// <summary>
         /// Initialize default <see cref="InMemorySeedOptionsExtension"/>
         /// </summary>
@@ -38,17 +43,20 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
         public override bool IsInMemoryProvider => true;
 
         /// <summary>
+        /// Gets the context options info
+        /// </summary>
+        public override DbContextOptionsExtensionInfo Info => _info ??= new ExtensionInfo(this);
+
+        /// <summary>
         /// Add specific services
         /// </summary>
         /// <param name="services">The existing service collection</param>
         /// <returns></returns>
-        public override bool ApplyServices(IServiceCollection services)
+        public override void ApplyServices(IServiceCollection services)
         {
             base.ApplyServices(services);
 
             services.AddScoped<ISeedRepository, InMemorySeedRepository>();
-
-            return true;
         }
 
         /// <summary>
@@ -56,5 +64,34 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
         /// </summary>
         /// <returns></returns>
         protected override SeedOptionsExtension Clone() => new InMemorySeedOptionsExtension(this);
+
+        private sealed class ExtensionInfo : DbContextOptionsExtensionInfo
+        {
+            public ExtensionInfo(IDbContextOptionsExtension extension) : base(extension)
+            {
+            }
+
+            private new InMemorySeedOptionsExtension Extension => (InMemorySeedOptionsExtension)base.Extension;
+
+            public override bool IsDatabaseProvider => false;
+
+            public override string LogFragment 
+            {
+                get
+                {
+                    return Extension.LogFragment;
+                }
+            }
+
+            public override long GetServiceProviderHashCode()
+            {
+                return 0L;
+            }
+
+            public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
+            {
+                debugInfo["InMemory"] = "1";
+            }
+        }
     }
 }
