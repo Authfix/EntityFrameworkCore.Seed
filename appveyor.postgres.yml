@@ -1,5 +1,6 @@
 install:
   - choco install gitversion.portable -pre -y
+  - choco install dotnetcore-sdk
 
 assembly_info:
   patch: false
