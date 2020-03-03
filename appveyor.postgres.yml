@@ -18,6 +18,8 @@ after_build:
 
 deploy:
   - provider: NuGet
+    on:
+      APPVEYOR_REPO_TAG: true
     api_key:
       secure: qN/9IE6xYz6zeFYPTvP93MOIyxGd5/mDun2Sq02pyLTuuiPXv9E+tYnFqG4IoSxy
     skip_symbols: true
