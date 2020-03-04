@@ -1,6 +1,6 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Script;
-using EFCore.Samples.WebApp.Data;
-using EFCore.Samples.WebApp.Entities;
+using EFCore.Samples.Data;
+using EFCore.Samples.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
@@ -24,7 +24,7 @@ namespace EFCore.Samples.WebApp.Seeds.Standard
             {
                 var newUser = new User
                 {
-                    Id = i
+                    Id = 0
                 };
 
                 users.Add(newUser);

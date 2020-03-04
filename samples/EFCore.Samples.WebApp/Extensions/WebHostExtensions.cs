@@ -1,6 +1,7 @@
-﻿using EFCore.Samples.WebApp.Data;
+﻿using EFCore.Samples.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EFCore.Samples.WebApp.Extensions
@@ -20,9 +21,20 @@ namespace EFCore.Samples.WebApp.Extensions
 
             using (var serviceScope = services.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var appContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                var provider = serviceScope.ServiceProvider.GetService<IConfiguration>()["Provider"];
 
-                appContext.Database.Migrate();
+                if(provider == "InMemory")
+                {
+                    return;
+                }
+
+                var applicationDbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+                applicationDbContext.Database.Migrate();
+                applicationDbContext.Dispose();
+
+                var anotherDbContext = serviceScope.ServiceProvider.GetService<AnotherDbContext>();
+                anotherDbContext.Database.Migrate();
+                anotherDbContext.Dispose();
             }
         }
     }

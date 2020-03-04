@@ -14,7 +14,7 @@ build_script:
   - ps: dotnet build /p:GenerateAssemblyInfo=false --configuration release --no-restore
 
 after_build:
-  - cmd: nuget pack .nuget/EntityFrameworkCore.Seed.Postgres.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+  - cmd: nuget pack .nuget/EntityFrameworkCore.Seed.SqlServer.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
 
 deploy:
   - provider: NuGet
@@ -26,12 +26,12 @@ deploy:
 
 artifacts:
   - path: '*.nupkg'
-    name: Authfix.EntityFrameworkCore.Seed.Postgres
+    name: Authfix.EntityFrameworkCore.Seed.SqlServer
 
 skip_commits:
   files:
     - src/EFCore.Seed.InMemory/
-    - src/EFCore.Seed.SqlServer/
+    - src/EFCore.Seed.Postgres/
     - src/EFCore.Seed/
 
 branches:
