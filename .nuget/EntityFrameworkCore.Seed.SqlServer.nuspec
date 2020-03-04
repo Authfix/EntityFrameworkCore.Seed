@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Authfix.EntityFrameworkCore.Seed.SqlServer</id>
+    <version>1.0.0</version>
+    <authors>Authfix</authors>
+    <licenseUrl>https://github.com/Authfix/EntityFrameworkCore.Seed/blob/release/1.0.0.0/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/Authfix/EntityFrameworkCore.Seed</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SQL Server support for package Authfix.EntityFrameworkCore.Seed.</description>
+    <dependencies>
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="3.1.0" />
+      <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="3.1.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\EFCore.Seed.SqlServer\bin\Release\netstandard2.1\Authfix.EntityFrameworkCore.Seed.SqlServer.dll" target="lib\netstandard2.1\Authfix.EntityFrameworkCore.Seed.SqlServer.dll" />
+  </files>
+</package>

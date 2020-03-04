@@ -32,6 +32,7 @@ skip_commits:
   files:
     - src/EFCore.Seed.InMemory/
     - src/EFCore.Seed.Postgres/
+    - src/EFCore.Seed.SqlServer/
 
 branches:
   only:
