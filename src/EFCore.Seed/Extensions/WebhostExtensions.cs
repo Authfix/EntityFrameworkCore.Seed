@@ -16,7 +16,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
         /// Seeds the data for a specific <see cref="DbContext"/>.
         /// </summary>
         /// <param name="webHost">The web host.</param>
-        public static void SeedData<T>(this IWebHost webHost) where T : DbContext
+        public static IWebHost SeedData<T>(this IWebHost webHost) where T : DbContext
         {
             using (var serviceScope = webHost.Services.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -24,6 +24,8 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
 
                 appContext.Database.Seed();
             }
+
+            return webHost;
         }
     }
 }
