@@ -1,7 +1,7 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Script;
+using EFCore.Samples.Data;
+using EFCore.Samples.Data.Entities;
 using EFCore.Samples.WebApp.Configuration;
-using EFCore.Samples.WebApp.Data;
-using EFCore.Samples.WebApp.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;

@@ -1,5 +1,6 @@
 using Authfix.EntityFrameworkCore.Seed.Postgres.Extensions;
 using Authfix.EntityFrameworkCore.Seed.InMemory.Extensions;
+using Authfix.EntityFrameworkCore.Seed.SqlServer.Extensions;
 using EFCore.Samples.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,9 @@ using EFCore.Samples.WebApp.Seeds;
 using System;
 using EFCore.Samples.WebApp.Configuration;
 using Microsoft.Extensions.Hosting;
+using EFCore.Samples.Data;
+using EFCore.Samples.Data.Migrations.SqlServer;
+using EFCore.Samples.Data.Migrations.Postgresql;
 
 namespace EFCore.Samples.WebApp
 {
@@ -33,29 +37,91 @@ namespace EFCore.Samples.WebApp
 
             services.AddSingleton<IAppConfiguration, AppConfiguration>();
 
-            services
-                .AddEntityFrameworkInMemoryDatabase()
-                //.AddEntityFrameworkNpgsql()
-                .AddDbContext<AnotherDbContext>(options =>
+            var provider = Configuration["Provider"];
+
+            switch (provider)
+            {
+                case "SqlServer":
+                    services.AddEntityFrameworkSqlServer();
+                    break;
+                case "Postgresql":
+                    services.AddEntityFrameworkNpgsql();
+                    break;
+                case "InMemory":
+                default:
+                    services.AddEntityFrameworkInMemoryDatabase();
+                    break;
+            }
+
+            services.AddDbContext<AnotherDbContext>(options =>
+            {
+                switch (provider)
                 {
-                    options.UseInMemoryDatabase("MemoryDB");
-                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
-                    {
-                        o.UseServiceProvider(services.BuildServiceProvider());
-                    });
-                    //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-                    //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
-                })
-                .AddDbContext<ApplicationDbContext>(options =>
+                    case "SqlServer":
+                        options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), o => 
+                        {
+                            o.MigrationsAssembly(typeof(SqlServerMigrationExtension).Assembly.FullName); 
+                        });
+                        options.UseSqlServerSeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.UseServiceProvider(services.BuildServiceProvider());
+                        });
+                        break;
+                    case "Postgresql":
+                        options.UseNpgsql(Configuration.GetConnectionString("Postgres"), o =>
+                        {
+                            o.MigrationsAssembly(typeof(PostgresqlMigrationExtension).Assembly.FullName);
+                        });
+                        options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.UseServiceProvider(services.BuildServiceProvider());
+                        });
+                        break;
+                    case "InMemory":
+                    default:
+                        options.UseInMemoryDatabase("MemoryDB");
+                        options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.UseServiceProvider(services.BuildServiceProvider());
+                        });
+                        break;
+                }
+            });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                switch (provider)
                 {
-                    options.UseInMemoryDatabase("MemoryDB");
-                    options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
-                    {
-                        o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
-                    });
-                    //options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
-                    //options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName);
-                });
+                    case "SqlServer":
+                        options.UseSqlServer(Configuration.GetConnectionString("SqlServer"), o =>
+                        {
+                            o.MigrationsAssembly(typeof(SqlServerMigrationExtension).Assembly.FullName);
+                        });
+                        options.UseSqlServerSeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
+                        });
+                        break;
+                    case "Postgresql":
+                        options.UseNpgsql(Configuration.GetConnectionString("Postgres"), o =>
+                        {
+                            o.MigrationsAssembly(typeof(PostgresqlMigrationExtension).Assembly.FullName);
+                        });
+                        options.UseNpgsqlSeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
+                        });
+                        break;
+                    case "InMemory":
+                    default:
+                        options.UseInMemoryDatabase("MemoryDB");
+                        options.UseInMemorySeed(Assembly.GetEntryAssembly().FullName, o =>
+                        {
+                            o.AddParameter(new IdentityConfiguration(Guid.NewGuid()));
+                        });
+                        break;
+                }
+            });
         }
 
         /// <summary>

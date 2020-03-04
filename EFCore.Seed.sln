@@ -15,7 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Samples.WebApp", "sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Seed.InMemory", "src\EFCore.Seed.InMemory\EFCore.Seed.InMemory.csproj", "{C4231D06-FD6B-42F8-9FE6-CB4896891455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Seed.SqlServer", "src\EFCore.Seed.SqlServer\EFCore.Seed.SqlServer.csproj", "{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Seed.SqlServer", "src\EFCore.Seed.SqlServer\EFCore.Seed.SqlServer.csproj", "{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Samples.Data.Migrations.SqlServer", "samples\EFCore.Samples.Migrations.SqlServer\EFCore.Samples.Data.Migrations.SqlServer.csproj", "{0A5C0492-1A53-494F-BF22-B078F5733E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Samples.Data.Migrations.Postgresql", "samples\EFCore.Samples.Migrations.Postgresql\EFCore.Samples.Data.Migrations.Postgresql.csproj", "{4D719E25-06EC-47B4-B660-1EC04A84DCEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore.Samples.Data", "samples\EFCore.Samples.Data\EFCore.Samples.Data.csproj", "{12CCA06B-B4E0-4989-AC29-CA5604E56BD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +49,18 @@ Global
 		{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A5C0492-1A53-494F-BF22-B078F5733E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5C0492-1A53-494F-BF22-B078F5733E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5C0492-1A53-494F-BF22-B078F5733E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5C0492-1A53-494F-BF22-B078F5733E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D719E25-06EC-47B4-B660-1EC04A84DCEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D719E25-06EC-47B4-B660-1EC04A84DCEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D719E25-06EC-47B4-B660-1EC04A84DCEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D719E25-06EC-47B4-B660-1EC04A84DCEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12CCA06B-B4E0-4989-AC29-CA5604E56BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CCA06B-B4E0-4989-AC29-CA5604E56BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CCA06B-B4E0-4989-AC29-CA5604E56BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CCA06B-B4E0-4989-AC29-CA5604E56BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +71,9 @@ Global
 		{8EEFE068-6D2F-4CB4-AAA2-97AAFDE6B518} = {FE3A5E67-520C-442E-A9AD-3538C4E795C0}
 		{C4231D06-FD6B-42F8-9FE6-CB4896891455} = {1EE653A1-A09A-4F71-9A91-0A02C6F64739}
 		{CCB9C728-7FEC-4C83-8918-2D62E2FA32BB} = {1EE653A1-A09A-4F71-9A91-0A02C6F64739}
+		{0A5C0492-1A53-494F-BF22-B078F5733E76} = {FE3A5E67-520C-442E-A9AD-3538C4E795C0}
+		{4D719E25-06EC-47B4-B660-1EC04A84DCEB} = {FE3A5E67-520C-442E-A9AD-3538C4E795C0}
+		{12CCA06B-B4E0-4989-AC29-CA5604E56BD4} = {FE3A5E67-520C-442E-A9AD-3538C4E795C0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9708D917-0137-4737-B133-011F3D0CDEC1}

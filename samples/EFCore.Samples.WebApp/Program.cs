@@ -1,4 +1,5 @@
 ﻿using Authfix.EntityFrameworkCore.Seed.Extensions;
+using EFCore.Samples.Data;
 using EFCore.Samples.WebApp.Data;
 using EFCore.Samples.WebApp.Extensions;
 using Microsoft.AspNetCore;
@@ -17,7 +18,7 @@ namespace EFCore.Samples.WebApp
             var webHost = BuildWebHost(args);
 
             // only for postgres
-            // webHost.MigrateDatabase();
+            webHost.MigrateDatabase();
 
             webHost.SeedData<ApplicationDbContext>();
             webHost.SeedData<AnotherDbContext>();

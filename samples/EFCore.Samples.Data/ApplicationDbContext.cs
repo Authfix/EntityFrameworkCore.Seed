@@ -1,7 +1,7 @@
-﻿using EFCore.Samples.WebApp.Entities;
+﻿using EFCore.Samples.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFCore.Samples.WebApp.Data
+namespace EFCore.Samples.Data
 {
     public class ApplicationDbContext : DbContext
     {

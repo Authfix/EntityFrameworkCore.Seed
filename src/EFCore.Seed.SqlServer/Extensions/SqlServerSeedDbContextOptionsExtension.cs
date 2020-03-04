@@ -20,7 +20,7 @@ namespace Authfix.EntityFrameworkCore.Seed.SqlServer.Extensions
         /// <param name="seedAssemblyName"></param>
         /// <param name="inMemorySeedOptionsAction"></param>
         /// <returns></returns>
-        public static DbContextOptionsBuilder UseNpgsqlSeed(this DbContextOptionsBuilder optionsBuilder, string seedAssemblyName, Action<SqlServerSeedDbContextOptionsBuilder> sqlServerSeedOptionsAction = null)
+        public static DbContextOptionsBuilder UseSqlServerSeed(this DbContextOptionsBuilder optionsBuilder, string seedAssemblyName, Action<SqlServerSeedDbContextOptionsBuilder> sqlServerSeedOptionsAction = null)
         {
             var extension = (SqlServerSeedOptionsExtension)GetOrCreateExtension(optionsBuilder).WithSeedAssemblyName(seedAssemblyName);
             ((IDbContextOptionsBuilderInfrastructure)optionsBuilder).AddOrUpdateExtension(extension);
