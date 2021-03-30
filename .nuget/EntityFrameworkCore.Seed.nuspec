@@ -13,6 +13,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\EFCore.Seed\bin\Release\netstandard2.1\Authfix.EntityFrameworkCore.Seed.dll" target="lib\netstandard2.1\Authfix.EntityFrameworkCore.Seed.dll" />
+    <file src="..\src\EFCore.Seed\bin\Release\net5.0\Authfix.EntityFrameworkCore.Seed.dll" target="lib\net5.0\Authfix.EntityFrameworkCore.Seed.dll" />
   </files>
 </package>
