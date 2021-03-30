@@ -5,7 +5,7 @@ install:
 
 environment:
   IGNORE_NORMALISATION_GIT_HEAD_MOVE: 1
-  
+
 assembly_info:
   patch: false
 
@@ -24,7 +24,7 @@ deploy:
     on:
       APPVEYOR_REPO_TAG: true
     api_key:
-      secure: so9xZSjmhQVptFD7BaDSdkz/UzWkYUk+iyUayIHdLIdq2BxU+Vwr+9FtIyxLIg0+
+      secure: lXrFRNJkedvPHULopEC1ZxW+ZmWJS3w6xlCZLsySg/MAOUNAhkM9ALyfxl2lhSkB
     skip_symbols: true
 
 artifacts:
