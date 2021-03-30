@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "bootstrap@3.3.7",
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "jquery@2.2.0",
+      "destination": "wwwroot/lib/jquery"
+    },
+    {
+      "library": "jquery-validation@1.14.0",
+      "destination": "wwwroot/lib/jquery-validation"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive"
+    }
+  ]
+}

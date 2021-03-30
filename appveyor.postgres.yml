@@ -3,11 +3,14 @@ image: Visual Studio 2019
 install:
   - choco install gitversion.portable -pre -y
 
+environment:
+  IGNORE_NORMALISATION_GIT_HEAD_MOVE: 1
+
 assembly_info:
   patch: false
 
 before_build:
-  - dotnet restore
+  - ps: dotnet restore
   - ps: gitversion /l console /output buildserver /updateAssemblyInfo
 
 build_script:
@@ -21,7 +24,7 @@ deploy:
     on:
       APPVEYOR_REPO_TAG: true
     api_key:
-      secure: so9xZSjmhQVptFD7BaDSdkz/UzWkYUk+iyUayIHdLIdq2BxU+Vwr+9FtIyxLIg0+
+      secure: lXrFRNJkedvPHULopEC1ZxW+ZmWJS3w6xlCZLsySg/MAOUNAhkM9ALyfxl2lhSkB
     skip_symbols: true
 
 artifacts:
