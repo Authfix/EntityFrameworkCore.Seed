@@ -1,7 +1,6 @@
 using Authfix.EntityFrameworkCore.Seed.Postgres.Extensions;
 using Authfix.EntityFrameworkCore.Seed.InMemory.Extensions;
 using Authfix.EntityFrameworkCore.Seed.SqlServer.Extensions;
-using EFCore.Samples.WebApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -38,20 +37,6 @@ namespace EFCore.Samples.WebApp
             services.AddSingleton<IAppConfiguration, AppConfiguration>();
 
             var provider = Configuration["Provider"];
-
-            switch (provider)
-            {
-                case "SqlServer":
-                    services.AddEntityFrameworkSqlServer();
-                    break;
-                case "Postgresql":
-                    services.AddEntityFrameworkNpgsql();
-                    break;
-                case "InMemory":
-                default:
-                    services.AddEntityFrameworkInMemoryDatabase();
-                    break;
-            }
 
             services.AddDbContext<AnotherDbContext>(options =>
             {
