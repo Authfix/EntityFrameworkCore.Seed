@@ -87,9 +87,14 @@ namespace Authfix.EntityFrameworkCore.Seed.SqlServer.Infrastructure.Internal
             /// to be needed. Most extensions do not have any such options and should return zero.
             /// </remarks>
             /// <returns></returns>
-            public override long GetServiceProviderHashCode()
+            public override int GetServiceProviderHashCode()
             {
-                return 0L;
+                return 0;
+            }
+
+            public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other)
+            {
+                return other is ExtensionInfo;
             }
 
             public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)
