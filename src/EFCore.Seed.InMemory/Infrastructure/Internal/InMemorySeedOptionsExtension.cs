@@ -83,9 +83,14 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Infrastructure.Internal
                 }
             }
 
-            public override long GetServiceProviderHashCode()
+            public override int GetServiceProviderHashCode()
             {
-                return 0L;
+                return 0;
+            }
+
+            public override bool ShouldUseSameServiceProvider(DbContextOptionsExtensionInfo other)
+            {
+                return other is ExtensionInfo;
             }
 
             public override void PopulateDebugInfo(IDictionary<string, string> debugInfo)

@@ -9,10 +9,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This project is not an official entity framework core library. It aims to give the ability to seed values inside the database for testing/integration purpose.</description>
     <dependencies>
-      <dependency id="Microsoft.EntityFrameworkCore" version="5.0.4" />
+      <dependency id="Microsoft.EntityFrameworkCore" version="6.0.3" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\EFCore.Seed\bin\Release\net5.0\Authfix.EntityFrameworkCore.Seed.dll" target="lib\net5.0\Authfix.EntityFrameworkCore.Seed.dll" />
+    <file src="..\src\EFCore.Seed\bin\Release\net6.0\Authfix.EntityFrameworkCore.Seed.dll" target="lib\net6.0\Authfix.EntityFrameworkCore.Seed.dll" />
   </files>
 </package>

@@ -3,7 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -13,17 +12,6 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
 {
     public static class WebHostExtensions
     {
-        /// <summary>
-        /// Seeds the data for a specific <see cref="DbContext"/>.
-        /// </summary>
-        /// <param name="webHost">The web host.</param>
-        public static IWebHost SeedData<T>(this IWebHost webHost) where T : DbContext
-        {
-            Seed(webHost.Services, typeof(T));
-
-            return webHost;
-        }
-
         /// <summary>
         /// Seeds the data for a specific <see cref="DbContext"/>.
         /// </summary>
@@ -38,15 +26,21 @@ namespace Authfix.EntityFrameworkCore.Seed.Extensions
         /// <summary>
         /// Seed the current database
         /// </summary>
-        /// <param name="serviceProvider"></param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="dbContextType">The database context type.</param>
         private static void Seed(IServiceProvider serviceProvider, Type dbContextType)
         {
-            using(var serviceScope = serviceProvider.CreateScope())
-            {
-                var appContext = serviceScope.ServiceProvider.GetService(dbContextType) as DbContext;
+            using var serviceScope = serviceProvider.CreateScope();
+            
+            var appContext = (DbContext)serviceScope.ServiceProvider.GetService(dbContextType);
 
-                appContext.Database.Seed();
+            if (appContext == null)
+            {
+                throw new Exception(
+                    $"The database context {dbContextType.Name} is not registered into the application");
             }
+            
+            appContext.Database.Seed();
         }
     }
 }
