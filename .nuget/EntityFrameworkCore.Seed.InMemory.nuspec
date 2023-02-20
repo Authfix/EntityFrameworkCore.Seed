@@ -9,11 +9,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>In memory support for package Authfix.EntityFrameworkCore.Seed.</description>
     <dependencies>
-      <dependency id="Authfix.EntityFrameworkCore.Seed" version="6.0.0" />
-      <dependency id="Microsoft.EntityFrameworkCore.InMemory" version="6.0.3" />
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="7.0.0" />
+      <dependency id="Microsoft.EntityFrameworkCore.InMemory" version="7.0.3" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\EFCore.Seed.InMemory\bin\Release\net6.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" target="lib\net6.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" />
+    <file src="..\src\EFCore.Seed.InMemory\bin\Release\net7.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" target="lib\net7.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" />
   </files>
 </package>
