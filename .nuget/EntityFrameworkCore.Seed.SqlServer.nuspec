@@ -9,8 +9,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SQL Server support for package Authfix.EntityFrameworkCore.Seed.</description>
     <dependencies>
-      <dependency id="Authfix.EntityFrameworkCore.Seed" version="6.0.0" />
-      <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="6.0.3" />
+      <dependency id="Authfix.EntityFrameworkCore.Seed" version="7.0.0" />
+      <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="7.0.3" />
     </dependencies>
   </metadata>
   <files>
