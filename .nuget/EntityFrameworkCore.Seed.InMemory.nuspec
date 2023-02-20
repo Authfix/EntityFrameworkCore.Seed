@@ -14,6 +14,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\EFCore.Seed.InMemory\bin\Release\net6.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" target="lib\net6.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" />
+    <file src="..\src\EFCore.Seed.InMemory\bin\Release\net7.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" target="lib\net7.0\Authfix.EntityFrameworkCore.Seed.InMemory.dll" />
   </files>
 </package>
