@@ -1,7 +1,7 @@
 image: Visual Studio 2022
 
 install:
-  - choco install gitversion.portable -pre -y
+  - choco install gitversion.portable -y
 
 environment:
   IGNORE_NORMALISATION_GIT_HEAD_MOVE: 1
