@@ -24,7 +24,7 @@ deploy:
     on:
       APPVEYOR_REPO_TAG: true
     api_key:
-      secure: xZBCQxa5EcbACCkMmGWMk0KNtftKVpuLpM/nt2etlAFPOGDf06Tj7Hv2B/tuy1ys
+      secure: V1xNLKig3MK6zJN2OxNqJyUklmlspccDIzK777xV8nrnW1Rk+WvnlsDbZc+HNbPk
     skip_symbols: true
 
 artifacts:
