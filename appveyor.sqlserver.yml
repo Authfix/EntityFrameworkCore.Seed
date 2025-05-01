@@ -17,7 +17,7 @@ build_script:
   - ps: dotnet build /p:GenerateAssemblyInfo=false --configuration release --no-restore
 
 after_build:
-  - cmd: nuget pack .nuget/EntityFrameworkCore.Seed.SqlServer.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+  - cmd: nuget pack .nuget/EntityFrameworkCore.Seed.SqlServer.nuspec -version "%GitVersion_SemVer%" -prop "target=%CONFIGURATION%"
 
 deploy:
   - provider: NuGet
