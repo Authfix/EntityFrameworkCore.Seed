@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>Authfix.EntityFrameworkCore.Seed.Postgres</AssemblyName>
     <RootNamespace>Authfix.EntityFrameworkCore.Seed.Postgres</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -19,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.1" />
   </ItemGroup>
 
