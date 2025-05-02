@@ -14,7 +14,7 @@ namespace Authfix.EntityFrameworkCore.Seed.InMemory.Script.Internal
         /// Check if the repository exists
         /// </summary>
         /// <returns></returns>
-        public bool Exists()
+        public bool EnsureCreated()
         {
             return true;
         }

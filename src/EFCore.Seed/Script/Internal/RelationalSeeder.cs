@@ -4,7 +4,6 @@
 //
 
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
@@ -35,14 +34,8 @@ namespace Authfix.EntityFrameworkCore.Seed.Script.Internal
         /// </summary>
         public override void Seed()
         {
-            if (!_seedRepository.Exists())
-            {
-                _seedDependencies.DatabaseCreator.EnsureCreated();
-
-                var createScript = _seedRepository.GetCreateScript();
-
-                ExecuteQuery(createScript);
-            }
+            _seedRepository.EnsureCreated(); 
+            _seedDependencies.DatabaseCreator.EnsureCreated();
 
             base.Seed();
         }
