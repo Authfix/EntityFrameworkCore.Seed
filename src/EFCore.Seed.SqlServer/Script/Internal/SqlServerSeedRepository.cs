@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using System;
 using Authfix.EntityFrameworkCore.Seed.Script;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.SqlServer.Migrations.Internal;
@@ -38,6 +39,24 @@ namespace Authfix.EntityFrameworkCore.Seed.SqlServer.Script.Internal
         /// Gets the MigrationId column name
         /// </summary>
         protected override string MigrationIdColumnName => Constants.DefaultSeedIdColumnName;
+
+        public bool EnsureCreated()
+        {
+            if (Exists())
+            {
+                return true;
+            }
+
+            try
+            {
+                Create();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         /// <summary>
         /// Gets the applied seeds.

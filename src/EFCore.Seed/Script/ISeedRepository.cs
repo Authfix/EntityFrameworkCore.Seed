@@ -13,13 +13,7 @@ namespace Authfix.EntityFrameworkCore.Seed.Script
         /// Check if the repository exists
         /// </summary>
         /// <returns></returns>
-        bool Exists();
-
-        /// <summary>
-        /// Gets the create script.
-        /// </summary>
-        /// <returns></returns>
-        string GetCreateScript();
+        bool EnsureCreated();
 
         /// <summary>
         /// Gets the applied seeds.

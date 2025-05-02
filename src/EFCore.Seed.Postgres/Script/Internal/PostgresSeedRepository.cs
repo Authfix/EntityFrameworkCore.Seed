@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Internal;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Npgsql;
 
 namespace Authfix.EntityFrameworkCore.Seed.Postgres.Script.Internal
 {
@@ -38,6 +41,19 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Script.Internal
         /// Gets the MigrationId column name
         /// </summary>
         protected override string MigrationIdColumnName => Constants.DefaultSeedIdColumnName;
+
+        public bool EnsureCreated()
+        {
+            try
+            {
+                Create();
+                return true;
+            }
+            catch (PostgresException e) when (e.SqlState == PostgresErrorCodes.DuplicateTable)
+            {
+                return false;
+            }
+        }
 
         /// <summary>
         /// Gets the applied seeds.
@@ -74,6 +90,14 @@ namespace Authfix.EntityFrameworkCore.Seed.Postgres.Script.Internal
             var insertScript = base.GetInsertScript(new HistoryRow(row.SeedId, row.ProductVersion));
 
             return insertScript;
+        }
+
+        protected override void ConfigureTable(EntityTypeBuilder<HistoryRow> history)
+        {
+            history.ToTable(DefaultTableName);
+            history.HasKey(h => h.MigrationId);
+            history.Property(h => h.MigrationId).HasColumnName(MigrationIdColumnName).HasMaxLength(150);
+            history.Property(h => h.ProductVersion).HasMaxLength(32).IsRequired();
         }
     }
 }
